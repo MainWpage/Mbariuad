@@ -1,1009 +1,688 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Office of the Municipal Mayor – Official Website</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-<style>
-
-:root{
-    --primary:#8B0000;
-    --secondary:#B22222;
-    --light:#f8f8f8;
-    --white:#ffffff;
-    --dark:#222222;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#fff;
-    color:#333;
-}
-
-header{
-    position:fixed;
-    width:100%;
-    top:0;
-    background:#fff;
-    z-index:999;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-}
-
-nav{
-    max-width:1400px;
-    margin:auto;
-    padding:15px 5%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    font-size:24px;
-    font-weight:700;
-    color:var(--primary);
-}
-
-nav ul{
-    display:flex;
-    gap:20px;
-    list-style:none;
-}
-
-nav a{
-    text-decoration:none;
-    color:#333;
-    font-size:14px;
-    font-weight:500;
-}
-
-nav a:hover{
-    color:var(--primary);
-}
-
-.hero{
-    min-height:100vh;
-    background:
-    linear-gradient(rgba(139,0,0,.75),rgba(139,0,0,.75)),
-    url('https://6a5b209553cbb51f4783b92e.imgix.net/sandbox/mayor.JPG');
-
-
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-    padding:20px;
-}
-
-.hero h1{
-    font-size:70px;
-}
-
-.hero h3{
-    font-weight:300;
-    margin:15px 0;
-}
-
-.hero p{
-    max-width:700px;
-    margin:auto;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:25px;
-    background:white;
-    color:var(--primary);
-    text-decoration:none;
-    padding:15px 35px;
-    border-radius:50px;
-    font-weight:600;
-}
-
-section{
-    padding:90px 8%;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:50px;
-}
-
-.section-title h2{
-    color:var(--primary);
-    font-size:40px;
-}
-
-.section-title p{
-    color:#666;
-}
-
-.about-grid{
-    display:grid;
-    grid-template-columns:400px 1fr;
-    gap:50px;
-    align-items:center;
-}
-
-.about-grid img{
-    width:100%;
-    border-radius:20px;
-}
-
-.card{
-    background:white;
-    border-radius:15px;
-    padding:30px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-.stats{
-    background:var(--primary);
-    color:white;
-}
-
-.stats-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.stat{
-    text-align:center;
-}
-
-.stat h3{
-    font-size:45px;
-}
-
-.projects-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-.project{
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-.project i{
-    font-size:45px;
-    color:var(--primary);
-    margin-bottom:15px;
-}
-
-.news-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:25px;
-}
-
-.news{
-    overflow:hidden;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-.news img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-}
-
-.news-content{
-    padding:20px;
-}
-
-.advisory{
-    background:var(--primary);
-    color:white;
-}
-
-.advisory-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.advisory-card{
-    background:rgba(255,255,255,.15);
-    padding:25px;
-    border-radius:10px;
-}
-
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
-}
-
-.gallery-grid img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    border-radius:15px;
-    cursor:pointer;
-}
-
-.transparency-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.transparency-item{
-    background:#f5f5f5;
-    padding:25px;
-    border-left:5px solid var(--primary);
-}
-
-.contact{
-    background:var(--primary);
-    color:white;
-    text-align:center;
-}
-
-footer{
-    background:#650000;
-    color:white;
-    text-align:center;
-    padding:30px;
-}
-
-/* Lightbox */
-
-.modal{
-    display:none;
-    position:fixed;
-    z-index:99999;
-    inset:0;
-    background:rgba(0,0,0,.95);
-    justify-content:center;
-    align-items:center;
-}
-
-.modal img{
-    max-width:90%;
-    max-height:90%;
-}
-
-.close{
-    position:absolute;
-    top:20px;
-    right:35px;
-    color:white;
-    font-size:50px;
-    cursor:pointer;
-}
-
-@media(max-width:900px){
-
-nav ul{
-    display:none;
-}
-
-.hero h1{
-    font-size:42px;
-}
-
-.about-grid{
-    grid-template-columns:1fr;
-}
-
-}
-
-
-
-
-/* Vision & Priorities */
-
-.services-section{
-    padding:100px 8%;
-    background:#f8f8f8;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title span{
-    color:#8B0000;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:2px;
-}
-
-.section-title h2{
-    font-size:42px;
-    color:#8B0000;
-    margin:10px 0;
-}
-
-.section-title p{
-    max-width:700px;
-    margin:auto;
-    color:#666;
-}
-
-.services-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-.service-card{
-    background:#fff;
-    padding:35px;
-    border-radius:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    transition:.3s ease;
-}
-
-.service-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
-}
-
-.service-card i{
-    font-size:48px;
-    color:#8B0000;
-    margin-bottom:20px;
-}
-
-.service-card h3{
-    color:#8B0000;
-    margin-bottom:12px;
-    font-size:22px;
-}
-
-.service-card p{
-    color:#555;
-    line-height:1.7;
-    margin-bottom:20px;
-}
-
-.service-card a{
-    text-decoration:none;
-    color:#8B0000;
-    font-weight:600;
-}
-
-.service-card a:hover{
-    color:#B22222;
-}
-
-@media(max-width:768px){
-    .section-title h2{
-        font-size:32px;
-    }
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title span{
-    color:#8B0000;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:2px;
-}
-
-.section-title h2{
-    font-size:42px;
-    color:#8B0000;
-    margin:15px 0;
-}
-
-.section-title p{
-    max-width:800px;
-    margin:auto;
-    color:#666;
-}
-
-.priority-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-.priority-card{
-    background:#fff;
-    border-radius:20px;
-    padding:35px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    transition:.35s ease;
-}
-
-.priority-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
-}
-
-.icon{
-    font-size:50px;
-    margin-bottom:20px;
-}
-
-.priority-card h3{
-    color:#8B0000;
-    margin-bottom:15px;
-}
-
-.priority-card p{
-    color:#555;
-    line-height:1.7;
-    margin-bottom:20px;
-}
-
-.priority-card a{
-    text-decoration:none;
-    color:#8B0000;
-    font-weight:600;
-}
-
-.priority-card a:hover{
-    color:#B22222;
-}
-
-@media(max-width:768px){
-
-.section-title h2{
-    font-size:32px;
-}
-
-}
-
-.section-header{
-    text-align:center;
-    max-width:850px;
-    margin:0 auto 60px;
-}
-
-.section-tag{
-    color:#8B0000;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:2px;
-}
-
-.section-header h2{
-    font-size:42px;
-    color:#8B0000;
-    margin:15px 0;
-}
-
-.section-header p{
-    color:#666;
-    line-height:1.8;
-}
-
-.vision-card{
-    background:#8B0000;
-    color:#fff;
-    padding:40px;
-    border-radius:20px;
-    margin-bottom:40px;
-    box-shadow:0 10px 30px rgba(0,0,0,.12);
-}
-
-.vision-card h3{
-    font-size:28px;
-    margin-bottom:15px;
-}
-
-.vision-card p{
-    line-height:1.9;
-    font-size:17px;
-}
-
-.priorities-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-.priority-card{
-    background:#fff;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    transition:.3s ease;
-}
-
-.priority-card:hover{
-    transform:translateY(-8px);
-}
-
-.priority-card i{
-    font-size:45px;
-    color:#8B0000;
-    margin-bottom:20px;
-}
-
-.priority-card h4{
-    color:#8B0000;
-    margin-bottom:12px;
-    font-size:20px;
-}
-
-.priority-card p{
-    color:#555;
-    line-height:1.7;
-}
-
-@media(max-width:768px){
-
-.section-header h2{
-    font-size:32px;
-}
-
-.vision-card{
-    padding:30px;
-}
-
-}
-
-
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.logo img{
-    width:140px;
-    height:100x;
-    object-fit:contain;
-}
-
-.logo-text{
-    display:flex;
-    flex-direction:column;
-    line-height:1.2;
-}
-
-.logo-text h2{
-    margin:0;
-    font-size:20px;
-    font-weight:700;
-    color:#8B0000;
-}
-
-.logo-text .small-text{
-    font-size:12px;
-    color:#555;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    font-weight:600;
-}
-
-@media (max-width:768px){
-
-    .logo img{
-        width:65px;
-        height:65px;
-    }
-
-    .logo-text h2{
-        font-size:16px;
-    }
-
-    .logo-text .small-text{
-        font-size:10px;
-    }
-
-}
-
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marlon Bariuad (CCP, CDPO) | Chief Security & Privacy Officer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#050811',
+                            dark: '#0A0F1D',
+                            card: '#10172A',
+                            accent: '#00F0FF',
+                            blue: '#0066FF',
+                            navy: '#0B1936',
+                            glow: 'rgba(0, 240, 255, 0.15)',
+                            text: '#F1F5F9',
+                            subtext: '#94A3B8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    },
+                    boxShadow: {
+                        'cyber': '0 0 25px rgba(0, 240, 255, 0.25)',
+                        'cyber-lg': '0 0 50px rgba(0, 102, 255, 0.3)',
+                        'blue-glow': '0 0 20px rgba(0, 102, 255, 0.4)',
+                        'halo': '0 0 45px rgba(0, 240, 255, 0.35)'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050811;
+            color: #F1F5F9;
+            overflow-x: hidden;
+        }
+        
+        .bg-cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .glass-panel {
+            background: rgba(10, 15, 29, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 240, 255, 0.12);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(0, 240, 255, 0.35);
+        }
+
+        /* Profile Glow Halo */
+        .profile-halo {
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.25), inset 0 0 15px rgba(0, 102, 255, 0.2);
+        }
+    </style>
 </head>
+<body class="bg-cyber-grid min-h-screen selection:bg-brand-accent selection:text-black">
 
-<body>
-
-<header>
-<nav>
-
-
-
-<div class="logo">
-    <img src="images/logoMayor.png" alt="Municipality of Bugasong Logo">
-    <div class="logo-text">
-        
-        <h2>Hon. Victor R. Condez</h2>
-        <span class="small-text">Office of the Municipal Mayor</span>
-    </div>
-</div>
-
-
-<ul>
-<li><a href="#about">Mayor</a></li>
-<li><a href="#vision-priorities">Vision & Priorities</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#news">News</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-</header>
-
-<section class="hero">
-<div>
-<h1>Hon. Victor R. Condez</h1>
-
-<p>
-Delivering Transparent Governance, Sustainable Development,
-and Quality Public Service for Every Bugasongnon.
-</p>
-<!-- <a href="#projects" class="btn">Explore Projects</a> -->
-</div>
-</section>
-
-<section id="about">
-
-<div class="section-title">
-<h2>Mayor's Corner</h2>
-<p>Leadership • Service • Progress</p>
-</div>
-
-<div class="about-grid">
-
-<img src="images/mayor-pic.png" alt="Mayor">
-
-<div class="card">
-
-<h3>Hon. Victor R. Condez</h3>
-
-<p>Welcome to my official website.</p><br>
-<p>As your public servant, I remain steadfast in my commitment to transparent governance, sustainable development, and responsive public service. Guided by integrity, accountability, and a genuine dedication to the welfare of our people, I continue to work together toward a stronger, more progressive, and more inclusive Bugasong.</p></br>
-
-
-<p>Through infrastructure modernization, quality education, accessible healthcare, economic empowerment, environmental stewardship, and disaster resilience, our administration strives to create meaningful opportunities and lasting improvements that benefit every Bugasongnon.</p></br>
-
-<p>I believe that good governance is not measured solely by completed projects, but by the positive impact these initiatives bring to the lives of our citizens. Together, let us build a future where every family can thrive, every community can prosper, and every citizen can take pride in a Bugasong that is resilient, innovative, and prepared for generations to come.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="stats">
-
-<!-- <div class="stats-grid">
-
-<div class="stat">
-<h3>100+</h3>
-<h2>Infrastructure</h2>
-</div>
-
-<div class="stat">
-<h3>27</h3>
-<h2>Education</h2>
-</div>
-
-<div class="stat">
-<h3>50K+</h3>
-<h2>Health</h2>
-</div>
-
-<div class="stat">
-<h3>15+</h3>
-<h2>Agriculture</h2>
-</div>
-
-<div class="stat">
-<h3>15+</h3>
-<h2>Tourism</h2>
-</div> -->
-
-</div>
-
-</br>
-</br>
-
-<!-- Vision & Priorities Section -->
-
-<section id="vision-priorities" class="services-section">
-
-    <div class="section-title">
-        <span>Leadership Agenda</span>
-        <h2>Vision & Priorities</h2>
-        <p>
-To build a progressive, resilient, and inclusive Bugasong where every citizen has access to quality public services, sustainable economic opportunities, safe communities, and a better quality of life through transparent, accountable, and people-centered governance.
-        </p>
+    <!-- Top Security Banner -->
+    <div class="bg-brand-dark border-b border-brand-accent/20 text-xs font-mono py-1.5 px-4 text-center tracking-wider text-brand-subtext flex justify-between items-center z-50 relative">
+        <div class="flex items-center space-x-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-emerald-400 font-bold">STATUS: CSPO GOVERNANCE ACTIVE</span>
+            <span class="hidden md:inline text-slate-500">| DICT CAT-3 EXPERT | NPC DPO IT SECTOR GROUP</span>
+        </div>
+        <div class="hidden sm:flex items-center space-x-4">
+            <span class="text-brand-accent">ISO/IEC 27001:2022 LEAD IMPLEMENTER</span>
+            <span>RA 10173 COMPLIANCE</span>
+        </div>
     </div>
 
-    <div class="services-grid">
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-brand-accent/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Brand Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-blue to-brand-accent p-0.5 flex items-center justify-center shadow-cyber">
+                        <div class="w-full h-full bg-brand-black rounded-full flex items-center justify-center font-mono font-bold text-brand-accent text-sm">
+                            MB
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" class="text-lg font-bold font-mono tracking-wider text-white">
+                            MARLON <span class="text-brand-accent">BARIUAD</span>
+                        </a>
+                        <p class="text-[10px] font-mono text-brand-subtext tracking-widest uppercase">CCP, CDPO • Chief Security & Privacy Officer</p>
+                    </div>
+                </div>
 
-        <div class="service-card">
-            <i class="fas fa-id-card"></i>
-            <h3>Certificates, Permits & IDs</h3>
-            <p>Avail certificates, licenses, permits, clearances, IDs, and official government documents.</p>
-           
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-7 text-xs font-mono font-medium uppercase tracking-wider">
+                    <a href="#about" class="text-slate-300 hover:text-brand-accent transition-colors">Bio</a>
+                    <a href="#highlights" class="text-slate-300 hover:text-brand-accent transition-colors">Highlights</a>
+                    <a href="#experience" class="text-slate-300 hover:text-brand-accent transition-colors">Experience</a>
+                    <a href="#certifications" class="text-slate-300 hover:text-brand-accent transition-colors">Certifications Vault</a>
+                    <a href="#education" class="text-slate-300 hover:text-brand-accent transition-colors">Education</a>
+                    <a href="#contact" class="text-slate-300 hover:text-brand-accent transition-colors">Contact</a>
+                </nav>
+
+                <!-- Status CTA -->
+                <div class="hidden lg:flex items-center">
+                    <a href="#contact" class="px-4 py-2 rounded border border-brand-accent/40 bg-brand-accent/10 text-brand-accent text-xs font-mono hover:bg-brand-accent hover:text-black transition duration-300">
+                        Initiate Advisory
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" type="button" class="md:hidden text-slate-400 hover:text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
 
-        <div class="service-card">
-            <i class="fas fa-store"></i>
-            <h3>Business & Trade</h3>
-            <p>Business registration, permits, taxes, investment assistance, and trade-related services.</p>
-          
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-brand-accent/20 bg-brand-dark px-4 pt-2 pb-6 space-y-3 font-mono text-xs uppercase tracking-wider">
+            <a href="#about" class="block text-slate-300 hover:text-brand-accent py-1">Bio</a>
+            <a href="#highlights" class="block text-slate-300 hover:text-brand-accent py-1">Highlights</a>
+            <a href="#experience" class="block text-slate-300 hover:text-brand-accent py-1">Experience</a>
+            <a href="#certifications" class="block text-slate-300 hover:text-brand-accent py-1">Certifications Vault</a>
+            <a href="#education" class="block text-slate-300 hover:text-brand-accent py-1">Education</a>
+            <a href="#contact" class="block text-slate-300 hover:text-brand-accent py-1">Contact</a>
         </div>
-
-        <div class="service-card">
-            <i class="fas fa-cloud-showers-heavy"></i>
-            <h3>Disaster & Weather</h3>
-            <p>Weather updates, disaster preparedness, emergency response, and public safety advisories.</p>
-          
-        </div>
-
-        <div class="service-card">
-            <i class="fas fa-file-signature"></i>
-            <h3>Registrations & Ordinances</h3>
-            <p>Applications, registrations, ordinances, permits, and other government transactions.</p>
-        
-        </div>
-
-        <div class="service-card">
-            <i class="fas fa-graduation-cap"></i>
-            <h3>Education & Training</h3>
-            <p>Enrollment, scholarships, seminars, training programs, research, and learning opportunities.</p>
-            
-        </div>
-
-        <div class="service-card">
-            <i class="fas fa-briefcase"></i>
-            <h3>Employment</h3>
-            <p>Job opportunities, employment requirements, career development, and professional eligibility.</p>
-           
-        </div>
-
-        <div class="service-card">
-            <i class="fas fa-heart-pulse"></i>
-            <h3>Health Services</h3>
-            <p>Healthcare facilities, medical assistance, public health programs, and wellness services.</p>
-            
-        </div>
-
-        <div class="service-card">
-            <i class="fas fa-house"></i>
-            <h3>Housing & Infrastructure</h3>
-            <p>Housing assistance, infrastructure projects, settlements management, and project monitoring.</p>
- 
-        </div>
-
-        <div class="service-card">
-            <i class="fas fa-paw"></i>
-            <h3>Veterinary Services</h3>
-            <p>Animal healthcare, livestock support, vaccination programs, and veterinary assistance.</p>
-     
-        </div>
-
-        <div class="service-card">
-            <i class="fas fa-hands-helping"></i>
-            <h3>Social Services</h3>
-            <p>Benefits, pensions, financial assistance, and social welfare programs for citizens.</p>
-         
-        </div>
-
-        <div class="service-card">
-            <i class="fas fa-file-invoice-dollar"></i>
-            <h3>Tax Services</h3>
-            <p>Tax assessment, payment services, clearances, and taxpayer assistance programs.</p>
-    
-        </div>
-
-        <div class="service-card">
-            <i class="fas fa-seedling"></i>
-            <h3>Agricultural Services</h3>
-            <p>Farmer assistance, agricultural education, farm support programs, and rural development.</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-
-
-</section>
-
-<section id="projects">
-
-<div class="section-title">
-<h2>Digital Ecosystem Projects</h2>
-</div>
-
-<div class="projects-grid">
-
-<div class="project">
-<i class="fas fa-landmark"></i>
-<h3>Official Website of Bugasong</h3>
-<p>Central source of information for government programs, public services, announcements, ordinances, transparency reports, and community updates from the Municipality of Bugasong.</p>
-</div>
-
-<div class="project">
-<i class="fas fa-hands-helping"></i>
-<h3>Citizen Services</h3>
-<p>Access essential government services, downloadable forms, permits, applications, requests, and citizen assistance programs designed to provide efficient and responsive public service.</p>
-</div>
-
-<!-- <div class="project">
-<i class="fas fa-network-wired"></i>
-<h3>Digital Barangays</h3>
-<p>Connecting communities through digital solutions for better local governance and public engagement.</p>
-</div>
- -->
-
-</div>
-
-</section>
-
-<section id="news">
-
-<div class="section-title">
-<h2>Latest News & Events</h2>
-</div>
-
-<div class="news-grid">
-
-<div class="news">
-<img src="images\Latest\1.jpg">
-<div class="news-content">
-<h3>Pagyakap sa Kabarangayan: PuroKalusugan</h3>
-<p>Closing the month of July with unwavering commitment, the Bugasong Primary Care Facility carried on its mission of delivering accessible and people-centered healthcare through the PagYakap sa Kabarangayan: PuroKalusugan outreach in Barangay Sabang West. Despite the challenges brought by the southwest monsoon, health services continued uninterrupted under the leadership of Dr. Donelle Camiña, Doctor to the Barrio (DTTB), at the Barangay Covered Gym.</p> 
-</div>
-</div>
-
-<div class="news">
-<img src="images\Latest\2.jpg">
-<div class="news-content">
-<h3>#LARAGWAY: </h3>
-<p>Nagpatigayon kang food redemption ang Walang Gutom Program (WGP) sa banwa kang Bugasong kadiya nga Huwebes, Hulyo 23, sa Bugasong Public Market Gymnasium, sa pagpanguna kang opisina kang Municipal Social Welfare and Development Officer (MSWDO) Lady Love B. Requintina, kaimaw man kang representante kang Department of Social Welfare and Development (DSWD) R6, bilang kabahin kang anda regular nga aktibidades.</p>
-</div>
-</div>
-
-<div class="news">
-<img src="images\Latest\3.jpg">
-<div class="news-content">
-<h3>Coordination Meeting with Punong Barangays, Barangay Secretaries, Barangay Treasurers, the Liga ng mga Barangay (LnB), and the Department of the Interior and Local Government (DILG) on July 20, 2026, at the Municipal Conference Hall.</h3>
-<p>The meeting served as a venue to strengthen collaboration between the municipal government, barangay officials, and the DILG in promoting effective local governance and ensuring the efficient implementation of government programs and policies..</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- <section class="advisory" id="advisory">
-
-<div class="section-title">
-<h2 style="color:white">Public Advisories</h2>
-</div>
-
-<div class="advisory-grid">
-
-<div class="advisory-card">
-⚠ Weather Advisory
-</div>
-
-<div class="advisory-card">
-⚠ Flood Monitoring
-</div>
-
-<div class="advisory-card">
-⚠ Health Advisory
-</div>
-
-<div class="advisory-card">
-⚠ Traffic Advisory
-</div>
-
-</div>
-
-</section>
- -->
-<section id="gallery">
-
-<div class="section-title">
-<h2>Community Gallery</h2>
-</div>
-
-<div class="gallery-grid">
-
-<img src="images\Community\1.jpg">
-<img src="images\Community\2.jpg">
-<img src="images\Community\3.jpg">
-<img src="images\Community\4.jpg">
-<img src="images\Community\5.jpg">
-<img src="images\Community\6.jpg">
-<img src="images\Community\7.jpg">
-<img src="images\Community\8.jpg">
-<img src="images\Community\9.jpg">
-<img src="images\Community\10.jpg">
-
-</div>
-
-</section>
-
-
-
-</section>
-
-<section class="contact" id="contact">
-
-<h2>Contact the Mayor's Office</h2>
-
-<p>Municipal Hall, Bugasong, Antique</p>
-<p>Email: mayor@bugasong.gov.ph</p>
-<p>Phone: (036) XXX-XXXX</p>
-
-</section>
-
-<footer>
-© 2026 Municipality of Bugasong | Office of the Municipal Mayor
-</footer>
-
-<div class="modal" id="modal">
-<span class="close">&times;</span>
-<img id="modal-img">
-</div>
-
-<script>
-
-const modal=document.getElementById('modal');
-const modalImg=document.getElementById('modal-img');
-
-document.querySelectorAll('.gallery-grid img').forEach(img=>{
-
-img.onclick=function(){
-
-modal.style.display='flex';
-modalImg.src=this.src;
-
-}
-
-});
-
-document.querySelector('.close').onclick=function(){
-modal.style.display='none';
-}
-
-modal.onclick=function(e){
-
-if(e.target===modal){
-modal.style.display='none';
-}
-
-}
-
-</script>
-
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 py-12">
+
+        <!-- ================= HERO SECTION (CLEAN CIRCULAR AVATAR - NO BOX, NO BORDER) ================= -->
+        <section id="about" class="relative pt-4 pb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left: Professional Summary -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-brand-blue/10 border border-brand-accent/30 text-brand-accent text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-brand-accent animate-ping"></span>
+                        <span>CHIEF SECURITY & PRIVACY OFFICER | 20+ YEARS EXP</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                        Marlon Bariuad <span class="text-slate-400 font-medium text-2xl sm:text-3xl block mt-1">(CCP, CDPO)</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-light">
+                        Experienced IT and Cybersecurity leader with over <strong class="text-white font-semibold">20 years of hands-on expertise</strong> across security operations (SOC), IT governance, data privacy compliance, infrastructure resilience, systems administration, and enterprise technology.
+                    </p>
+
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Currently serving as Chief Security Officer & Data Protection Officer at Datalogic Systems Corporation. Recognized by the <strong class="text-slate-200">DICT-Cybersecurity Bureau as a Category-3 Expert</strong> and by the <strong class="text-slate-200">National Privacy Commission (NPC)</strong> as a recognized DPO and Core Member of the NPC Data Privacy IT Sector Group in the Philippines.
+                    </p>
+
+                    <!-- Key Executive Pillars -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 font-mono text-xs">
+                        <div class="p-3 rounded bg-brand-dark/80 border border-slate-800 text-center">
+                            <span class="text-brand-accent font-bold block text-sm">ISO 27001</span>
+                            <span class="text-slate-400 text-[10px]">Lead Implementer</span>
+                        </div>
+                        <div class="p-3 rounded bg-brand-dark/80 border border-slate-800 text-center">
+                            <span class="text-brand-accent font-bold block text-sm">RA 10173</span>
+                            <span class="text-slate-400 text-[10px]">DPO Compliance</span>
+                        </div>
+                        <div class="p-3 rounded bg-brand-dark/80 border border-slate-800 text-center">
+                            <span class="text-brand-accent font-bold block text-sm">Category-3</span>
+                            <span class="text-slate-400 text-[10px]">DICT Expert</span>
+                        </div>
+                        <div class="p-3 rounded bg-brand-dark/80 border border-slate-800 text-center">
+                            <span class="text-brand-accent font-bold block text-sm">50+ Certs</span>
+                            <span class="text-slate-400 text-[10px]">Sec & Cloud</span>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action Buttons -->
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#contact" class="px-6 py-3 rounded bg-gradient-to-r from-brand-blue to-cyan-500 text-white font-semibold font-mono text-xs shadow-cyber hover:brightness-110 transition flex items-center space-x-2">
+                            <span>CONTACT MARLON</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                        <a href="#certifications" class="px-6 py-3 rounded bg-slate-900 text-slate-200 border border-slate-700 hover:border-brand-accent/50 font-mono text-xs transition">
+                            VIEW CERTIFICATIONS VAULT
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Profile Picture (Clean Circle - Ambient Blue Halo Effect) -->
+                <div class="lg:col-span-5 flex justify-center items-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full p-1 profile-halo transition-all duration-500 hover:scale-105">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-brand-dark">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Marlon Bariuad" 
+                                 class="w-full h-full object-cover filter contrast-105"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x800/0A0F1D/00F0FF?text=Marlon+Bariuad';">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= RECOGNITION & GOVERNANCE HIGHLIGHTS ================= -->
+        <section id="highlights" class="space-y-6">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <div class="text-brand-accent font-mono text-xs tracking-widest uppercase">// Official Recognition</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Governance & Institutional Credentials</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="glass-panel p-6 rounded-xl border border-brand-accent/20 flex flex-col justify-between space-y-3">
+                    <div class="w-10 h-10 rounded bg-brand-blue/20 border border-brand-blue flex items-center justify-center text-brand-accent font-mono font-bold">
+                        DICT
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white">Category-3 Expert</h3>
+                        <p class="text-xs text-brand-accent font-mono mt-0.5">DICT Cybersecurity Bureau</p>
+                        <p class="text-xs text-slate-400 mt-2">Recognized national cybersecurity professional providing advanced technical & governance expert guidance.</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 text-[11px] font-mono text-emerald-400 flex items-center">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2"></span> Official Recognition
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl border border-brand-accent/20 flex flex-col justify-between space-y-3">
+                    <div class="w-10 h-10 rounded bg-brand-blue/20 border border-brand-blue flex items-center justify-center text-brand-accent font-mono font-bold">
+                        NPC
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white">Recognized DPO & Core Member</h3>
+                        <p class="text-xs text-brand-accent font-mono mt-0.5">NPC IT Sector Group</p>
+                        <p class="text-xs text-slate-400 mt-2">National Privacy Commission recognized Data Protection Officer & IT Sector Group core contributor.</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 text-[11px] font-mono text-emerald-400 flex items-center">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2"></span> Official Recognition
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl border border-brand-accent/20 flex flex-col justify-between space-y-3">
+                    <div class="w-10 h-10 rounded bg-brand-blue/20 border border-brand-blue flex items-center justify-center text-brand-accent font-mono font-bold">
+                        ISO
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white">ISO/IEC 27001:2022</h3>
+                        <p class="text-xs text-brand-accent font-mono mt-0.5">Lead Implementer</p>
+                        <p class="text-xs text-slate-400 mt-2">Certified to design, establish, maintain, and audit Enterprise Information Security Management Systems (ISMS).</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 text-[11px] font-mono text-emerald-400 flex items-center">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2"></span> Global Standard
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl border border-brand-accent/20 flex flex-col justify-between space-y-3">
+                    <div class="w-10 h-10 rounded bg-brand-blue/20 border border-brand-blue flex items-center justify-center text-brand-accent font-mono font-bold">
+                        CCP
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white">CCP & CDPO Certified</h3>
+                        <p class="text-xs text-brand-accent font-mono mt-0.5">Appkademiya Certified</p>
+                        <p class="text-xs text-slate-400 mt-2">Certified Cybersecurity Professional and Certified Data Protection Officer designations.</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 text-[11px] font-mono text-emerald-400 flex items-center">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2"></span> Dual Designations
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= STREAMLINED CAREER EXPERIENCE ================= -->
+        <section id="experience" class="space-y-8">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <div class="text-brand-accent font-mono text-xs tracking-widest uppercase">// Track Record</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Career Experience</h2>
+            </div>
+
+            <div class="space-y-6 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-slate-800">
+
+                <!-- Timeline item 1: Datalogic CSPO -->
+                <div class="relative flex flex-col md:flex-row items-center group">
+                    <div class="flex items-center justify-start w-full md:w-1/2 md:pr-8 md:text-right">
+                        <div class="glass-panel p-6 rounded-xl border border-brand-accent/30 w-full space-y-2">
+                            <div class="flex justify-between md:justify-end items-center space-x-2">
+                                <span class="text-xs font-mono text-brand-accent font-bold">Jan 2023 - Present (3 yrs 11 mos)</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-500/30">PRESENT</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Chief Security Officer & Data Protection Officer</h3>
+                            <p class="text-xs font-mono text-slate-300">Datalogic Systems Corporation • Muntinlupa City</p>
+                            <p class="text-xs text-slate-400 leading-relaxed pt-2">
+                                Executive leadership of enterprise ISMS (ISO/IEC 27001:2022) and data protection compliance (RA 10173). Oversees threat defense, vulnerability management, organizational risk governance, and regulatory interface.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute left-3 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-black shadow-cyber z-10"></div>
+                </div>
+
+                <!-- Timeline item 2: P.A. Properties -->
+                <div class="relative flex flex-col md:flex-row items-center group">
+                    <div class="flex items-center justify-end w-full md:w-1/2 md:pl-8 md:ml-auto">
+                        <div class="glass-panel p-6 rounded-xl border border-slate-800 w-full space-y-2">
+                            <span class="text-xs font-mono text-brand-accent font-bold">Jun 2022 - Jan 2023 (8 mos)</span>
+                            <h3 class="text-lg font-bold text-white">IT Database Administrator Lead</h3>
+                            <p class="text-xs font-mono text-slate-300">P.A. Properties • Biñan, Laguna</p>
+                            <p class="text-xs text-slate-400 leading-relaxed pt-2">
+                                Led technical management for MS SQL Server enterprise platforms, access control governance, high-availability backup/recovery, and disaster recovery strategies supporting core operations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute left-3 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-brand-black z-10"></div>
+                </div>
+
+                <!-- Timeline item 3: Datalogic SysAdmin -->
+                <div class="relative flex flex-col md:flex-row items-center group">
+                    <div class="flex items-center justify-start w-full md:w-1/2 md:pr-8 md:text-right">
+                        <div class="glass-panel p-6 rounded-xl border border-slate-800 w-full space-y-2">
+                            <span class="text-xs font-mono text-brand-accent font-bold">Feb 2016 - Jun 2022 (6 yrs 5 mos)</span>
+                            <h3 class="text-lg font-bold text-white">Network, Linux & MS SQL Administrator</h3>
+                            <p class="text-xs font-mono text-slate-300">Datalogic Systems Corporation • Muntinlupa City</p>
+                            <p class="text-xs text-slate-400 leading-relaxed pt-2">
+                                Configured and secured enterprise firewalls, VLANs, routers, Linux distributions, and MS SQL databases. Maintained high system uptime and proactive threat isolation.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute left-3 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-brand-black z-10"></div>
+                </div>
+
+                <!-- Timeline item 4: Freelance Consultant -->
+                <div class="relative flex flex-col md:flex-row items-center group">
+                    <div class="flex items-center justify-end w-full md:w-1/2 md:pl-8 md:ml-auto">
+                        <div class="glass-panel p-6 rounded-xl border border-slate-800 w-full space-y-2">
+                            <span class="text-xs font-mono text-brand-accent font-bold">Nov 2019 - Feb 2022 (2 yrs 4 mos)</span>
+                            <h3 class="text-lg font-bold text-white">Freelance Information Technology Consultant</h3>
+                            <p class="text-xs font-mono text-slate-300">Cavite City, Philippines</p>
+                            <p class="text-xs text-slate-400 leading-relaxed pt-2">
+                                Delivered IT infrastructure strategy, security posture hardening, and risk management roadmaps for corporate clients.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute left-3 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-brand-black z-10"></div>
+                </div>
+
+                <!-- Timeline item 5: Pipol Broadband -->
+                <div class="relative flex flex-col md:flex-row items-center group">
+                    <div class="flex items-center justify-start w-full md:w-1/2 md:pr-8 md:text-right">
+                        <div class="glass-panel p-6 rounded-xl border border-slate-800 w-full space-y-2">
+                            <span class="text-xs font-mono text-brand-accent font-bold">Feb 2015 - Jan 2016 (1 yr)</span>
+                            <h3 class="text-lg font-bold text-white">Network Operations Center (NOC) Engineer</h3>
+                            <p class="text-xs font-mono text-slate-300">Pipol Broadband & Telecommunications Corp.</p>
+                            <p class="text-xs text-slate-400 leading-relaxed pt-2">
+                                Executed 24/7 telecommunications monitoring, ISP link troubleshooting, and rapid incident resolution for regional carrier networks.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute left-3 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-brand-black z-10"></div>
+                </div>
+
+                <!-- Timeline item 6: SLSU -->
+                <div class="relative flex flex-col md:flex-row items-center group">
+                    <div class="flex items-center justify-end w-full md:w-1/2 md:pl-8 md:ml-auto">
+                        <div class="glass-panel p-6 rounded-xl border border-slate-800 w-full space-y-2">
+                            <span class="text-xs font-mono text-brand-accent font-bold">Jul 2008 - Mar 2014 (5 yrs 9 mos)</span>
+                            <h3 class="text-lg font-bold text-white">IT Educator, Network Admin & MIS Coordinator</h3>
+                            <p class="text-xs font-mono text-slate-300">Southern Leyte State University</p>
+                            <p class="text-xs text-slate-400 leading-relaxed pt-2">
+                                Managed campus-wide infrastructure, research data systems, and taught Cisco networking & IT courses.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute left-3 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-brand-black z-10"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= COMPREHENSIVE CERTIFICATIONS & LICENSES VAULT ================= -->
+        <section id="certifications" class="space-y-6">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <div class="text-brand-accent font-mono text-xs tracking-widest uppercase">// Complete Verified Transcript</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Certifications & Credentials Vault</h2>
+                <p class="text-xs text-slate-400">Search and filter over 50 verified technical licenses and certifications.</p>
+            </div>
+
+            <!-- Filter Controls & Real-Time Search Bar -->
+            <div class="glass-panel p-4 rounded-xl border border-slate-800 space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                    
+                    <!-- Tab Category Buttons -->
+                    <div class="flex flex-wrap gap-2 text-xs font-mono" id="cert-category-tabs">
+                        <button onclick="filterCerts('all')" class="cert-tab-btn active px-3 py-1.5 rounded bg-brand-blue text-white">ALL (50+)</button>
+                        <button onclick="filterCerts('governance')" class="cert-tab-btn px-3 py-1.5 rounded bg-slate-900 text-slate-300 hover:text-white border border-slate-800">PRIVACY & GOVERNANCE</button>
+                        <button onclick="filterCerts('soc')" class="cert-tab-btn px-3 py-1.5 rounded bg-slate-900 text-slate-300 hover:text-white border border-slate-800">SOC & THREAT DEFENSE</button>
+                        <button onclick="filterCerts('cloud')" class="cert-tab-btn px-3 py-1.5 rounded bg-slate-900 text-slate-300 hover:text-white border border-slate-800">CLOUD & INFRASTRUCTURE</button>
+                        <button onclick="filterCerts('forensics')" class="cert-tab-btn px-3 py-1.5 rounded bg-slate-900 text-slate-300 hover:text-white border border-slate-800">FORENSICS & CIP</button>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="w-full sm:w-64 relative">
+                        <input type="text" id="cert-search" oninput="searchCerts()" placeholder="Search certification..." class="w-full px-3 py-1.5 rounded bg-brand-black border border-slate-700 text-xs font-mono text-white focus:outline-none focus:border-brand-accent">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications Grid Output Container -->
+            <div id="cert-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Cert cards will render here dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ================= EDUCATION & ACADEMIES ================= -->
+        <section id="education" class="space-y-8">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <div class="text-brand-accent font-mono text-xs tracking-widest uppercase">// Academic Foundations</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Education & Technical Training</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Formal Degrees -->
+                <div class="glass-panel p-6 rounded-xl border border-slate-800 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                        <span class="text-brand-accent font-mono">01.</span>
+                        <span>Academic Degrees</span>
+                    </h3>
+
+                    <div class="space-y-4 font-mono text-xs">
+                        <div class="p-3 bg-slate-900/80 rounded border border-slate-800">
+                            <div class="text-white font-bold text-sm">Master of Science in Information Technology (M.Sc. I.T)</div>
+                            <div class="text-brand-accent">Southern Leyte State University (2011 – 2013)</div>
+                            <div class="text-slate-400 text-[11px] mt-1">Major in Cisco Networking & Telecommunications</div>
+                        </div>
+
+                        <div class="p-3 bg-slate-900/80 rounded border border-slate-800">
+                            <div class="text-white font-bold text-sm">Bachelor of Computer Science (BCompSc)</div>
+                            <div class="text-brand-accent">St. John Bosco Computer College (1999 – 2003)</div>
+                            <div class="text-slate-400 text-[11px] mt-1">Major in Programming</div>
+                        </div>
+
+                        <div class="p-3 bg-slate-900/80 rounded border border-slate-800">
+                            <div class="text-white font-bold text-sm">Systems Programming Diploma</div>
+                            <div class="text-brand-accent">AMA Computer Learning Center (1997 – 1998)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cisco Academy & Special Programs -->
+                <div class="glass-panel p-6 rounded-xl border border-slate-800 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                        <span class="text-brand-accent font-mono">02.</span>
+                        <span>Cisco Networking Academy & Bootcamps</span>
+                    </h3>
+
+                    <div class="space-y-3 font-mono text-xs">
+                        <div class="p-3 bg-slate-900/80 rounded border border-slate-800">
+                            <div class="text-white font-bold">CCNA Routing & Switching Bootcamp</div>
+                            <div class="text-slate-400 text-[11px]">System, Networking, and LAN/WAN Management</div>
+                        </div>
+
+                        <div class="p-3 bg-slate-900/80 rounded border border-slate-800">
+                            <div class="text-white font-bold">Cisco Academy Professional Modules</div>
+                            <ul class="list-disc list-inside text-slate-400 text-[11px] mt-1 space-y-1">
+                                <li>Ethical Hacker Certification</li>
+                                <li>Cybersecurity Essentials & Intro to Cybersecurity</li>
+                                <li>Introduction to IoT</li>
+                                <li>NDG Linux Unhatched</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= CONTACT & PGP KEY ================= -->
+        <section id="contact" class="space-y-8 pb-12">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <div class="text-brand-accent font-mono text-xs tracking-widest uppercase">// Secure Communications</div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Direct Engagement</h2>
+                <p class="text-xs text-slate-400">Available for advisory roles, ISO 27001 ISMS implementations, and DPA compliance audits.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-xl border border-slate-800 space-y-4">
+                    <form onsubmit="handleForm(event)" class="space-y-4 font-mono text-xs">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-slate-400 mb-1">YOUR NAME *</label>
+                                <input type="text" required placeholder="Jane Doe" class="w-full px-3 py-2.5 rounded bg-brand-black border border-slate-700 text-white focus:outline-none focus:border-brand-accent">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">EMAIL ADDRESS *</label>
+                                <input type="email" required placeholder="j.doe@company.com" class="w-full px-3 py-2.5 rounded bg-brand-black border border-slate-700 text-white focus:outline-none focus:border-brand-accent">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-400 mb-1">SUBJECT / TYPE</label>
+                            <select class="w-full px-3 py-2.5 rounded bg-brand-black border border-slate-700 text-white focus:outline-none focus:border-brand-accent">
+                                <option>CSPO / Executive Advisory</option>
+                                <option>ISO 27001 ISMS Implementation</option>
+                                <option>Data Privacy Act (RA 10173) Audit</option>
+                                <option>Speaking & Technical Workshops</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-400 mb-1">MESSAGE *</label>
+                            <textarea required rows="4" placeholder="Detail your security governance or advisory needs..." class="w-full px-3 py-2.5 rounded bg-brand-black border border-slate-700 text-white focus:outline-none focus:border-brand-accent"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 rounded bg-gradient-to-r from-brand-blue to-cyan-500 text-white font-bold text-xs tracking-wider shadow-cyber hover:brightness-110 transition">
+                            TRANSMIT MESSAGE
+                        </button>
+                    </form>
+
+                    <div id="contact-success" class="hidden p-3 rounded bg-emerald-950 border border-emerald-500/50 text-emerald-400 text-center text-xs font-mono">
+                        Message sent successfully. Response expected within 24 hours.
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-4 font-mono text-xs">
+                    
+                    <div class="glass-panel p-6 rounded-xl border border-brand-accent/30 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-white font-bold">PGP FINGERPRINT</span>
+                            <button onclick="copyPgp()" class="text-brand-accent hover:underline">[ Copy PGP ]</button>
+                        </div>
+                        <div class="p-3 bg-black rounded border border-slate-800 text-[10px] text-slate-400 overflow-x-auto">
+                            FINGERPRINT: 88F9 B12A CD40 901F 33E4 771B 4A99 B12E 90FF 34C1
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-xl border border-slate-800 space-y-3">
+                        <div class="text-slate-400 uppercase tracking-widest">// PROFESSIONAL NETWORKS</div>
+                        <a href="https://www.linkedin.com/in/marlon-bariuad-ccp-cdpo-181a3684/" target="_blank" class="flex justify-between items-center p-3 rounded bg-slate-900 border border-slate-700 hover:border-brand-accent transition">
+                            <span class="text-white font-bold">LinkedIn Profile</span>
+                            <span class="text-brand-accent">/in/marlon-bariuad</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-800 glass-panel py-6 font-mono text-xs text-slate-500 text-center">
+        © 2026 MARLON BARIUAD (CCP, CDPO) • CHIEF SECURITY & PRIVACY OFFICER
+    </footer>
+
+    <!-- Certifications JavaScript Engine & Interaction -->
+    <script>
+        // Master Dataset of Certifications
+        const certData = [
+            // Governance & Privacy
+            { title: "DICT Recognized Cybersecurity Professional (Category 3 Expert)", org: "DICT Cybersecurity Bureau", category: "governance", year: "2026" },
+            { title: "Certified Cybersecurity Professional (CCP)", org: "Appkademiya", category: "governance", year: "2026" },
+            { title: "Certified Data Protection Officer (CDPO)", org: "Appkademiya", category: "governance", year: "2026" },
+            { title: "NPC Data Privacy Modules DPA 101-402, PIA, Breach Management", org: "National Privacy Commission", category: "governance", year: "2024" },
+            { title: "ISO/IEC 27001 Information Security Associate", org: "SkillFront", category: "governance", year: "2021" },
+            { title: "ISO/IEC 20000 IT Service Management Associate", org: "SkillFront", category: "governance", year: "2021" },
+            { title: "ISO 9001 Quality Management Systems Associate", org: "SkillFront", category: "governance", year: "2021" },
+            { title: "Certified SME Cyber Security Officer", org: "EU Cyber Academy", category: "governance", year: "2026" },
+            { title: "Certified Ransomware Protection Officer", org: "EU Cyber Academy", category: "governance", year: "2026" },
+            { title: "Certified PrivacyOps & AI Security & Governance", org: "Securiti AI", category: "governance", year: "2025" },
+
+            // SOC & Threat Defense
+            { title: "Threat Hunter", org: "CrowdStrike", category: "soc", year: "2026" },
+            { title: "Certified Blue Team Practitioner", org: "The SecOps Group", category: "soc", year: "2026" },
+            { title: "Certified Network Security Practitioner", org: "The SecOps Group", category: "soc", year: "2026" },
+            { title: "Certified Red Team Operations Management (CRTOM)", org: "Red Team Leaders", category: "soc", year: "2025" },
+            { title: "Threat Intelligence & Governance Analyst (CTIGA)", org: "Red Team Leaders", category: "soc", year: "2026" },
+            { title: "Mastering Pentest & Red Team Report Writing", org: "Red Team Leaders", category: "soc", year: "2026" },
+            { title: "Data Exfiltration - Red Team Operations", org: "Red Team Leaders", category: "soc", year: "2026" },
+            { title: "White-Box Pentesting Fundamentals", org: "Hack The Box", category: "soc", year: "2026" },
+            { title: "Vulnerability Management Specialist", org: "Security Blue Team", category: "soc", year: "2024" },
+            { title: "Certified IT Infrastructure & Cyber SOC Analyst (CICSA)", org: "Red-Blue", category: "soc", year: "2025" },
+
+            // Cloud & Infrastructure
+            { title: "Cato Certified Associate (CCA)", org: "Cato Networks", category: "cloud", year: "2026" },
+            { title: "Introduction to Zero Trust (LFS183)", org: "The Linux Foundation", category: "cloud", year: "2026" },
+            { title: "OWASP® Top 10 Security Threats (SKF100)", org: "The Linux Foundation", category: "cloud", year: "2026" },
+            { title: "XSS Exploits and Defenses (LFEL1010)", org: "The Linux Foundation", category: "cloud", year: "2026" },
+            { title: "Multicloud Network Associate", org: "Aviatrix", category: "cloud", year: "2025" },
+            { title: "ZCNA in Security, WLAN, Switch & Nebula", org: "Zyxel Networks", category: "cloud", year: "2026" },
+            { title: "Fortinet Certified Fundamentals & Associate", org: "Fortinet", category: "cloud", year: "2023" },
+            { title: "Sophos Central Overview Engineer", org: "Sophos", category: "cloud", year: "2023" },
+
+            // Forensics & CIP
+            { title: "Linux Forensics & Digital Forensics Investigation", org: "Cyber5W", category: "forensics", year: "2025" },
+            { title: "Critical Infrastructure Protection (ICIP)", org: "OPSWAT", category: "forensics", year: "2023" },
+            { title: "Critical Infrastructure Protection Certification", org: "U.S. Dept of Homeland Security", category: "forensics", year: "2020" },
+            { title: "Introduction to Cyber Intelligence", org: "U.S. Dept of Homeland Security", category: "forensics", year: "2020" },
+            { title: "Insider Threat Detection", org: "Teramind", category: "forensics", year: "2024" }
+        ];
+
+        let currentCat = 'all';
+
+        function renderCerts() {
+            const grid = document.getElementById('cert-grid');
+            const query = document.getElementById('cert-search').value.toLowerCase();
+            grid.innerHTML = '';
+
+            const filtered = certData.filter(cert => {
+                const matchesCat = currentCat === 'all' || cert.category === currentCat;
+                const matchesSearch = cert.title.toLowerCase().includes(query) || cert.org.toLowerCase().includes(query);
+                return matchesCat && matchesSearch;
+            });
+
+            filtered.forEach(cert => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel p-4 rounded-lg border border-slate-800 space-y-2 hover:border-brand-accent/40 transition duration-300';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <span class="text-[10px] font-mono text-brand-accent bg-brand-blue/10 px-2 py-0.5 rounded border border-brand-accent/20">${cert.org}</span>
+                        <span class="text-[10px] font-mono text-slate-500">${cert.year}</span>
+                    </div>
+                    <h4 class="text-xs font-bold text-white font-mono">${cert.title}</h4>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCerts(cat) {
+            currentCat = cat;
+            document.querySelectorAll('.cert-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-blue', 'text-white');
+                btn.classList.add('bg-slate-900', 'text-slate-300');
+            });
+            event.target.classList.remove('bg-slate-900', 'text-slate-300');
+            event.target.classList.add('bg-brand-blue', 'text-white');
+            renderCerts();
+        }
+
+        function searchCerts() {
+            renderCerts();
+        }
+
+        function copyPgp() {
+            const text = "FINGERPRINT: 88F9 B12A CD40 901F 33E4 771B 4A99 B12E 90FF 34C1";
+            const temp = document.createElement('textarea');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            alert("PGP Fingerprint copied to clipboard.");
+        }
+
+        function handleForm(e) {
+            e.preventDefault();
+            document.getElementById('contact-success').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('contact-success').classList.add('hidden');
+            }, 5000);
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Initialize grid on load
+        window.onload = function() {
+            renderCerts();
+        };
+    </script>
 </body>
 </html>
