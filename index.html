@@ -88,9 +88,6 @@
       .cyber-orb:before,.cyber-orb:after{content:"";position:absolute;border:1px solid rgba(67,141,255,.16);border-radius:50%;inset:24px}
       .cyber-orb:after{inset:54px;border-style:dashed}
       @keyframes orb{to{transform:rotate(360deg)}}
-      #visit-stats{background:linear-gradient(110deg,rgba(8,24,46,.96),rgba(9,19,37,.96));border-top:1px solid rgba(101,230,242,.22)}
-      #visit-stats .stat-number{font-variant-numeric:tabular-nums;color:var(--cyan)}
-      .sound-toggle{border:1px solid rgba(101,230,242,.35);border-radius:999px;padding:.55rem .9rem;color:#b9f8ff;background:rgba(17,95,145,.15);font-size:11px}
       footer{background:rgba(4,10,20,.92)!important}
       @media(max-width:767px){
         main{padding-left:1rem!important;padding-right:1rem!important;gap:4.5rem!important}
@@ -191,6 +188,7 @@
                         <div class="w-full h-full rounded-full overflow-hidden bg-brand-dark">
                             <img src="bariuad.jpg" 
                                  alt="Marlon Bariuad" 
+                                 loading="eager" fetchpriority="high"
                                  class="w-full h-full object-cover filter contrast-105"
                                  onerror="this.onerror=null; this.src='https://placehold.co/800x800/0A0F1D/00F0FF?text=Marlon+Bariuad';">
 
@@ -550,33 +548,12 @@
     </main>
 
 
-    <section id="visit-stats" class="py-8 px-4 sm:px-6">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-        <div>
-        <div class="text-[10px] font-mono tracking-[.25em] text-cyan-300 uppercase">Visitor intelligence</div>
-          <h2 class="text-xl sm:text-2xl font-bold text-white mt-1">Website Visit Statistics</h2>
-          <p class="text-xs text-slate-400 mt-1">Copyright@ mbariuad 2026</p>
-        </div> 
-        <div class="grid grid-cols-2 gap-3 sm:gap-5">
-          <div class="rounded-xl border border-cyan-300/20 bg-slate-950/50 px-5 py-4 min-w-[130px]">
-            <div class="text-[10px] font-mono text-slate-400 tracking-widest">THIS BROWSER</div>
-            <div id="visit-count" class="stat-number text-3xl font-bold mt-1">—</div>
-          </div>         
-           <div class="rounded-xl border border-cyan-300/20 bg-slate-950/50 px-5 py-4 min-w-[130px]">
-            <div class="text-[10px] font-mono text-slate-400 tracking-widest">LAST VISIT</div>
-            <div id="last-visit" class="text-sm font-semibold text-white mt-3">First visit</div>
-          </div>
-        </div>
-       <button id="sound-toggle" class="sound-toggle self-start md:self-center" type="button" aria-pressed="true">◖ Sound enabled</button>
-      </div>
-    </section>
-
     <footer class="border-t border-slate-800 glass-panel py-6 font-mono text-xs text-slate-500 text-center">
         © 2026 MARLON BARIUAD (CCP, CDPO) • CHIEF SECURITY & PRIVACY OFFICER
     </footer>
 
-    <!-- Background Audio Element for Autoplay -->
-    <audio id="bg-music" loop>
+    <!-- Background music: full-volume autoplay is attempted on every page visit. -->
+    <audio id="bg-music" autoplay loop preload="auto" playsinline>
         <source src="music.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -585,32 +562,43 @@
     <script>
         // Master Dataset: Professional Credentials and Training
         const certData = [
-            // Certified / Credentials (May salitang "Certified")
+            // Certified / Credentials — consolidated to avoid duplicate entries
+            { title: "Certified Cybersecurity Foundations", org: "Hackviser", category: "soc", year: "2026", group: "certified" },
             { title: "Certified Cybersecurity Professional (CCP)", org: "Appkademiya", category: "governance", year: "2026", group: "certified" },
             { title: "Certified Data Protection Officer (CDPO)", org: "Appkademiya", category: "governance", year: "2026", group: "certified" },
-            { title: "Certified SME Cyber Security Officer", org: "EU Cyber Academy", category: "governance", year: "2026", group: "certified" },
-            { title: "Certified Ransomware Protection Officer", org: "EU Cyber Academy", category: "governance", year: "2026", group: "certified" },
-            { title: "Certified PrivacyOps & AI Security & Governance", org: "Securiti AI", category: "governance", year: "2025", group: "certified" },
+            { title: "Cato Certified Associate (CCA)", org: "Cato Networks", category: "cloud", year: "2026", group: "certified" },
+            { title: "Certified SME Cyber Security Officer", org: "EU Cyber Academy Company", category: "governance", year: "2026", group: "certified" },
+            { title: "Certified Ransomware Protection Officer", org: "EU Cyber Academy Company", category: "governance", year: "2026", group: "certified" },
+            { title: "Certified Red Team Operations Management (CRTOM)", org: "Red Team Leaders", category: "soc", year: "2025", group: "certified" },
+            { title: "Certified Cybersecurity Educator Professional (CCEP)", org: "Red Team Leaders", category: "governance", year: "2025", group: "certified" },
+            { title: "Certified Threat Intelligence & Governance Analyst (CTIGA)", org: "Red Team Leaders", category: "soc", year: "2026", group: "certified" },
+            { title: "Zyxel Certified Network Associate (ZCNA)", org: "Zyxel Networks", category: "cloud", year: "2026", group: "certified" },
             { title: "Certified Blue Team Practitioner", org: "The SecOps Group", category: "soc", year: "2026", group: "certified" },
             { title: "Certified Network Security Practitioner", org: "The SecOps Group", category: "soc", year: "2026", group: "certified" },
-            { title: "Certified Red Team Operations Management (CRTOM)", org: "Red Team Leaders", category: "soc", year: "2025", group: "certified" },
-            { title: "Certified IT Infrastructure & Cyber SOC Analyst (CICSA)", org: "Red-Blue", category: "soc", year: "2025", group: "certified" },
-            { title: "Cato Certified Associate (CCA)", org: "Cato Networks", category: "cloud", year: "2026", group: "certified" },
-            { title: "ZCNA in Security, WLAN, Switch & Nebula", org: "Zyxel Networks", category: "cloud", year: "2026", group: "certified" },
-            { title: "Fortinet Certified Fundamentals & Associate", org: "Fortinet", category: "cloud", year: "2023", group: "certified" },
+            { title: "Certified Data Security Posture Management", org: "Securiti AI", category: "governance", year: "2025", group: "certified" },
+            { title: "AI Security & Governance Certified", org: "Securiti AI", category: "governance", year: "2025", group: "certified" },
+            { title: "Certified PrivacyOps", org: "Securiti AI", category: "governance", year: "2025", group: "certified" },
+            { title: "Yeastar Certified Expert", org: "YEASTAR", category: "cloud", year: "2020", group: "certified" },
+            { title: "Certified IT Infrastructure and Cyber SOC Analyst Training (CICSA)", org: "Red-Blue", category: "soc", year: "2025", group: "certified" },
+            { title: "Certified Lean Six Sigma White Belt", org: "Management & Strategy Institute", category: "governance", year: "2020", group: "certified" },
+            { title: "Certified Project Management Essential", org: "Management & Strategy Institute", category: "governance", year: "2020", group: "certified" },
+            { title: "CyberArk Certified Trustee", org: "CyberArk", category: "cloud", year: "2020", group: "certified" },
+            { title: "Fortinet Certified Fundamentals Cybersecurity", org: "Fortinet", category: "cloud", year: "2022", group: "certified" },
+            { title: "Fortinet Certified Associate Cybersecurity", org: "Fortinet", category: "cloud", year: "2023", group: "certified" },
+            { title: "ICSI | CNSS Certified Network Security Specialist", org: "DefensityOne", category: "cloud", year: "2020", group: "certified" },
 
-            // Non-Certified / Training & Development (Nailipat ang mga hiniling dito)
+            // Non-Certified / Training & Development
             { title: "DICT Recognized Cybersecurity Professional (Category 3 Expert)", org: "DICT Cybersecurity Bureau", category: "governance", year: "2026", group: "training" },
             { title: "NPC Data Privacy Modules DPA 101-402, PIA, Breach Management", org: "National Privacy Commission", category: "governance", year: "2024", group: "training" },
             { title: "ISO/IEC 27001 Information Security Associate", org: "SkillFront", category: "governance", year: "2021", group: "training" },
             { title: "ISO/IEC 20000 IT Service Management Associate", org: "SkillFront", category: "governance", year: "2021", group: "training" },
             { title: "ISO 9001 Quality Management Systems Associate", org: "SkillFront", category: "governance", year: "2021", group: "training" },
             { title: "Threat Hunter", org: "CrowdStrike", category: "soc", year: "2026", group: "training" },
-            { title: "Threat Intelligence & Governance Analyst (CTIGA)", org: "Red Team Leaders", category: "soc", year: "2026", group: "training" },
             { title: "Mastering Pentest & Red Team Report Writing", org: "Red Team Leaders", category: "soc", year: "2026", group: "training" },
             { title: "Data Exfiltration - Red Team Operations", org: "Red Team Leaders", category: "soc", year: "2026", group: "training" },
             { title: "White-Box Pentesting Fundamentals", org: "Hack The Box", category: "soc", year: "2026", group: "training" },
             { title: "Vulnerability Management Specialist", org: "Security Blue Team", category: "soc", year: "2024", group: "training" },
+            { title: "Introduction to Vulnerability Management", org: "Security Blue Team", category: "soc", year: "2024", group: "training" },
             { title: "Introduction to Zero Trust (LFS183)", org: "The Linux Foundation", category: "cloud", year: "2026", group: "training" },
             { title: "OWASP® Top 10 Security Threats (SKF100)", org: "The Linux Foundation", category: "cloud", year: "2026", group: "training" },
             { title: "XSS Exploits and Defenses (LFEL1010)", org: "The Linux Foundation", category: "cloud", year: "2026", group: "training" },
@@ -620,7 +608,45 @@
             { title: "Critical Infrastructure Protection (ICIP)", org: "OPSWAT", category: "forensics", year: "2023", group: "training" },
             { title: "Critical Infrastructure Protection Certification", org: "U.S. Dept of Homeland Security", category: "forensics", year: "2020", group: "training" },
             { title: "Introduction to Cyber Intelligence", org: "U.S. Dept of Homeland Security", category: "forensics", year: "2020", group: "training" },
-            { title: "Insider Threat Detection", org: "Teramind", category: "forensics", year: "2024", group: "training" }
+            { title: "Insider Threat Detection", org: "Teramind", category: "forensics", year: "2024", group: "training" },
+
+            // Additional Non-Certified / Training & Development records — duplicates omitted
+            { title: "Digital Protection Introduction", org: "Red Team Leaders", category: "governance", year: "2026", group: "training" },
+            { title: "Advanced OSINT Mastery", org: "Red Team Leaders", category: "soc", year: "2026", group: "training" },
+            { title: "Introduction to Bug Bounty", org: "Red Team Leaders", category: "soc", year: "2025", group: "training" },
+            { title: "Cybersecurity Fundamentals and Insights", org: "Red Team Leaders", category: "soc", year: "2026", group: "training" },
+            { title: "Digital Forensics & Incident Investigation", org: "Red Team Leaders", category: "forensics", year: "2026", group: "training" },
+            { title: "Tenable Nessus Fundamentals", org: "Tenable", category: "soc", year: "2026", group: "training" },
+            { title: "Introduction to Linux (LFS101)", org: "The Linux Foundation", category: "cloud", year: "2025", group: "training" },
+            { title: "A Beginner's Guide to Linux Kernel Development (LFD103)", org: "The Linux Foundation", category: "cloud", year: "2021", group: "training" },
+            { title: "Google Cloud Big Data and Machine Learning Fundamentals", org: "Google", category: "cloud", year: "2020", group: "training" },
+            { title: "Technical Support Fundamentals", org: "Google", category: "cloud", year: "2021", group: "training" },
+            { title: "Cybersecurity Career Starter Certification (CCSC)", org: "Hack & Fix", category: "soc", year: "2026", group: "training" },
+            { title: "Cyber Security Challenges - Advent of Cyber 2025", org: "TryHackMe", category: "soc", year: "2026", group: "training" },
+            { title: "Decode 2025 Cybersecurity Conference", org: "Decode PH", category: "governance", year: "2025", group: "training" },
+            { title: "Cybersecurity Essentials (LFC108)", org: "The Linux Foundation", category: "soc", year: "2023", group: "training" },
+            { title: "Lean Foundations Professional Certification", org: "SkillFront", category: "governance", year: "2021", group: "training" },
+            { title: "Achieving Maximum Visibility on your Supply Chain", org: "Direc Business Technologies Inc.", category: "governance", year: "2022", group: "training" },
+            { title: "Introduction to Cybersecurity", org: "Cisco Networking Academy", category: "soc", year: "2020", group: "training" },
+            { title: "Cybersecurity Essentials", org: "Cisco Networking Academy", category: "soc", year: "2020", group: "training" },
+            { title: "Ethical Hacker", org: "Cisco Networking Academy", category: "soc", year: "2024", group: "training" },
+            { title: "Cyberattacks in the Pandemic: Learn How to Handle This Double Trouble", org: "Sophos", category: "soc", year: "2020", group: "training" },
+            { title: "SQL Server Certification Course", org: "igmGuru", category: "cloud", year: "2022", group: "training" },
+            { title: "Network Defense Essentials (NDE)", org: "EC-Council", category: "soc", year: "2023", group: "training" },
+            { title: "API Security Architect", org: "API Academy", category: "soc", year: "2020", group: "training" },
+            { title: "DICT Cybersecurity Awareness Webinar 2020: Data Security and PKI towards the New Normal", org: "Department of Information and Communications Technology - Philippines", category: "governance", year: "2020", group: "training" },
+            { title: "DICT Cybersecurity Awareness Webinar 2020: How to be Cybersafe in this Pandemic", org: "Department of Information and Communications Technology", category: "governance", year: "2020", group: "training" },
+            { title: "Ransomware Uncovered Specialist Certificate of Completion", org: "ICTTF - United for Digital Resilience", category: "soc", year: "2023", group: "training" },
+            { title: "Data Privacy Roadshow 2023 - SMX Convention Center, Clark, Pampanga", org: "National Privacy Commission", category: "governance", year: "2023", group: "training" },
+            { title: "Linux Forensics Distributions", org: "Cyber5W", category: "forensics", year: "2025", group: "training" },
+            { title: "Computer Data Representation", org: "Cyber5W", category: "forensics", year: "2025", group: "training" },
+            { title: "Intro to Linux from a Forensics Perspective - Ubuntu Version", org: "Cyber5W", category: "forensics", year: "2025", group: "training" },
+            { title: "Introduction to Evidence Acquisition", org: "Cyber5W", category: "forensics", year: "2025", group: "training" },
+            { title: "Introduction to Digital Forensic", org: "Cyber5W", category: "forensics", year: "2025", group: "training" },
+            { title: "NSE 3 Network Security Associate", org: "Fortinet", category: "cloud", year: "2022", group: "training" },
+            { title: "NSE 2 Network Security Associate", org: "Fortinet", category: "cloud", year: "2022", group: "training" },
+            { title: "NSE 1 Network Security Associate", org: "Fortinet", category: "cloud", year: "2022", group: "training" },
+            { title: "ISC2 Candidate", org: "ISC2", category: "governance", year: "2023", group: "training" }
         ];
 
         let currentCat = 'certified';
@@ -701,67 +727,31 @@
 
     <script>
     (() => {
-      const countEl = document.getElementById('visit-count');
-      const lastEl = document.getElementById('last-visit');
-      const soundBtn = document.getElementById('sound-toggle');
-      const keyCount = 'marlon_site_visits_v1';
-      const keyLast = 'marlon_site_last_visit_v1';
-      let visits = Number(localStorage.getItem(keyCount) || 0) + 1;
-      const previous = localStorage.getItem(keyLast);
-      localStorage.setItem(keyCount, String(visits));
-      localStorage.setItem(keyLast, new Date().toISOString());
-      countEl.textContent = visits.toLocaleString();
-      lastEl.textContent = previous ? new Date(previous).toLocaleString() : 'First visit';
-
-      // Background music autoplay trigger logic
+      // Try audible, full-volume playback immediately on every page visit.
+      // Browsers may block audible autoplay; if so, start as soon as the visitor interacts.
       const bgMusic = document.getElementById('bg-music');
       if (bgMusic) {
-          bgMusic.volume = 0.3;
-          const startMusic = () => {
-              bgMusic.play().then(() => {
-                  window.removeEventListener('pointerdown', startMusic);
-                  window.removeEventListener('keydown', startMusic);
-              }).catch(err => console.log("Autoplay waiting for user interaction"));
-          };
-          window.addEventListener('pointerdown', startMusic, { once: true });
-          window.addEventListener('keydown', startMusic, { once: true });
+        bgMusic.volume = 1.0;
+        bgMusic.muted = false;
+        const startMusic = () => {
+          bgMusic.volume = 1.0;
+          bgMusic.muted = false;
+          const playAttempt = bgMusic.play();
+          if (playAttempt && typeof playAttempt.then === 'function') {
+            playAttempt.then(() => {
+              window.removeEventListener('pointerdown', startMusic);
+              window.removeEventListener('keydown', startMusic);
+              window.removeEventListener('touchstart', startMusic);
+            }).catch(() => {
+              // Audible autoplay is restricted by some browsers until user interaction.
+            });
+          }
+        };
+        startMusic();
+        window.addEventListener('pointerdown', startMusic, { passive: true });
+        window.addEventListener('keydown', startMusic);
+        window.addEventListener('touchstart', startMusic, { passive: true });
       }
-
-      // Short synthesized cyber confirmation tone. Browsers require a user gesture for audio.
-      let soundEnabled = localStorage.getItem('marlon_site_sound') !== 'off';
-      let soundPlayed = false;
-      function cyberTone(){
-        if(!soundEnabled || soundPlayed) return;
-        soundPlayed = true;
-        try {
-          const Ctx = window.AudioContext || window.webkitAudioContext;
-          if(!Ctx) return;
-          const ctx = new Ctx();
-          const now = ctx.currentTime;
-          [660, 880, 1174].forEach((freq,i)=>{
-            const osc=ctx.createOscillator(), gain=ctx.createGain();
-            osc.type='sine'; osc.frequency.setValueAtTime(freq,now+i*.075);
-            gain.gain.setValueAtTime(.0001,now+i*.075);
-            gain.gain.exponentialRampToValueAtTime(.045,now+i*.075+.018);
-            gain.gain.exponentialRampToValueAtTime(.0001,now+i*.075+.13);
-            osc.connect(gain);gain.connect(ctx.destination);
-            osc.start(now+i*.075);osc.stop(now+i*.075+.15);
-          });
-          setTimeout(()=>ctx.close(),650);
-        } catch(e) {}
-      }
-      function firstGesture(){ cyberTone(); window.removeEventListener('pointerdown',firstGesture); window.removeEventListener('keydown',firstGesture); }
-      window.addEventListener('pointerdown',firstGesture,{once:true,passive:true});
-      window.addEventListener('keydown',firstGesture,{once:true});
-      soundBtn.addEventListener('click',()=>{
-        soundEnabled=!soundEnabled;
-        localStorage.setItem('marlon_site_sound',soundEnabled?'on':'off');
-        soundBtn.textContent=soundEnabled?'◖ Sound enabled':'◖ Sound muted';
-        soundBtn.setAttribute('aria-pressed',String(soundEnabled));
-        if(soundEnabled){soundPlayed=false;cyberTone();}
-      });
-      soundBtn.textContent=soundEnabled?'◖ Sound enabled':'◖ Sound muted';
-      soundBtn.setAttribute('aria-pressed',String(soundEnabled));
 
       // Reveal-on-scroll; content remains visible if IntersectionObserver is unavailable.
       const revealTargets=document.querySelectorAll('main>section');
