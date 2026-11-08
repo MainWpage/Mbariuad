@@ -70,11 +70,6 @@
       main>section{scroll-margin-top:100px}
       #about{min-height:66vh;display:flex;align-items:center}
       #about h1{font-size:clamp(2.4rem,5.4vw,4.7rem);line-height:1.04;letter-spacing:-.055em}
-      .marlon-name{position:relative;display:inline-block;padding-bottom:.13em;background:linear-gradient(105deg,#fff 4%,#b9f7ff 25%,#4dd9ff 43%,#fff 57%,#7baeff 76%,#fff 96%);background-size:220% auto;background-clip:text;-webkit-background-clip:text;color:transparent;text-shadow:0 0 24px rgba(58,190,255,.12);animation:name-shimmer 7s ease-in-out infinite,name-glow 4s ease-in-out infinite}
-      .marlon-name:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:99px;background:linear-gradient(90deg,transparent,#65e6f2 22%,#438dff 72%,transparent);transform:scaleX(.72);transform-origin:left;animation:name-underline 3.8s ease-in-out infinite}
-      @keyframes name-shimmer{0%,100%{background-position:100% center}50%{background-position:0% center}}
-      @keyframes name-glow{0%,100%{filter:drop-shadow(0 0 3px rgba(101,230,242,.12))}50%{filter:drop-shadow(0 0 12px rgba(67,141,255,.32))}}
-      @keyframes name-underline{0%,100%{transform:scaleX(.48);opacity:.65}50%{transform:scaleX(1);opacity:1}}
       #about .lg\:col-span-7>p:first-of-type{font-size:clamp(1rem,1.45vw,1.2rem);max-width:58rem}
       .portrait-shell{isolation:isolate;border:1px solid rgba(101,230,242,.55);background:#0a1930;box-shadow:0 0 0 8px rgba(56,153,255,.045),0 25px 85px rgba(0,117,255,.23)}
       .portrait-shell:before{content:"";position:absolute;inset:-1px;z-index:15;border-radius:inherit;padding:1px;background:linear-gradient(145deg,rgba(101,230,242,.85),transparent 40%,rgba(67,141,255,.8));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
@@ -155,8 +150,8 @@
                 <div class="lg:col-span-7 space-y-6">
 
 
-                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-                        <span class="marlon-name">Marlon Bariuad</span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                        Marlon Bariuad <!-- <span class="text-slate-400 font-medium text-2xl sm:text-3xl block mt-1">(CCP, CDPO)</span> -->
                     </h1>
                     <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-brand-blue/10 border border-brand-accent/30 text-brand-accent text-xs font-mono">
                         <span class="w-2 h-2 rounded-full bg-brand-accent animate-ping"></span>
