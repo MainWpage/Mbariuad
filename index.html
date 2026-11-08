@@ -70,6 +70,11 @@
       main>section{scroll-margin-top:100px}
       #about{min-height:66vh;display:flex;align-items:center}
       #about h1{font-size:clamp(2.4rem,5.4vw,4.7rem);line-height:1.04;letter-spacing:-.055em}
+      .marlon-name{position:relative;display:inline-block;padding-bottom:.13em;background:linear-gradient(105deg,#fff 4%,#b9f7ff 25%,#4dd9ff 43%,#fff 57%,#7baeff 76%,#fff 96%);background-size:220% auto;background-clip:text;-webkit-background-clip:text;color:transparent;text-shadow:0 0 24px rgba(58,190,255,.12);animation:name-shimmer 7s ease-in-out infinite,name-glow 4s ease-in-out infinite}
+      .marlon-name:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:99px;background:linear-gradient(90deg,transparent,#65e6f2 22%,#438dff 72%,transparent);transform:scaleX(.72);transform-origin:left;animation:name-underline 3.8s ease-in-out infinite}
+      @keyframes name-shimmer{0%,100%{background-position:100% center}50%{background-position:0% center}}
+      @keyframes name-glow{0%,100%{filter:drop-shadow(0 0 3px rgba(101,230,242,.12))}50%{filter:drop-shadow(0 0 12px rgba(67,141,255,.32))}}
+      @keyframes name-underline{0%,100%{transform:scaleX(.48);opacity:.65}50%{transform:scaleX(1);opacity:1}}
       #about .lg\:col-span-7>p:first-of-type{font-size:clamp(1rem,1.45vw,1.2rem);max-width:58rem}
       .portrait-shell{isolation:isolate;border:1px solid rgba(101,230,242,.55);background:#0a1930;box-shadow:0 0 0 8px rgba(56,153,255,.045),0 25px 85px rgba(0,117,255,.23)}
       .portrait-shell:before{content:"";position:absolute;inset:-1px;z-index:15;border-radius:inherit;padding:1px;background:linear-gradient(145deg,rgba(101,230,242,.85),transparent 40%,rgba(67,141,255,.8));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
@@ -150,8 +155,8 @@
                 <div class="lg:col-span-7 space-y-6">
 
 
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-                        Marlon Bariuad <!-- <span class="text-slate-400 font-medium text-2xl sm:text-3xl block mt-1">(CCP, CDPO)</span> -->
+                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                        <span class="marlon-name">Marlon Bariuad</span>
                     </h1>
                     <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-brand-blue/10 border border-brand-accent/30 text-brand-accent text-xs font-mono">
                         <span class="w-2 h-2 rounded-full bg-brand-accent animate-ping"></span>
@@ -378,7 +383,7 @@
             <div class="text-center max-w-3xl mx-auto space-y-2">
                 <div class="text-brand-accent font-mono text-xs tracking-widest uppercase">// Professional Credentials & Learning</div>
                 <h2 class="text-2xl sm:text-3xl font-bold text-white">Professional Credentials & Development</h2>
-                <p class="text-xs text-slate-400">Browse professional certifications and credentials separately from courses, technical training, and development activities.</p>
+                <p class="text-xs text-slate-400">Browse professional certifications and credentials separately from virtual and face-to-face training sessions and professional development activities.</p>
             </div>
 
             <!-- Filter Controls & Real-Time Search Bar -->
@@ -388,7 +393,7 @@
                     <!-- Tab Category Buttons -->
                     <div class="flex flex-wrap gap-2 text-xs font-mono" id="cert-category-tabs" role="group" aria-label="Credential categories">
                         <button type="button" onclick="filterCerts('certified')" class="cert-tab-btn active px-3 py-2 rounded bg-brand-blue text-white" aria-pressed="true">CERTIFIED CREDENTIALS</button>
-                        <button type="button" onclick="filterCerts('training')" class="cert-tab-btn px-3 py-2 rounded bg-slate-900 text-slate-300 hover:text-white border border-slate-800" aria-pressed="false">NON-CERTIFIED / TRAINING</button>
+                        <button type="button" onclick="filterCerts('training')" class="cert-tab-btn px-3 py-2 rounded bg-slate-900 text-slate-300 hover:text-white border border-slate-800" aria-pressed="false">VIRTUAL &amp; FACE-TO-FACE TRAINING ATTENDED</button>
                     </div>
 
                     <!-- Search Input -->
@@ -552,7 +557,7 @@
         © 2026 MARLON BARIUAD (CCP, CDPO) • CHIEF SECURITY & PRIVACY OFFICER
     </footer>
 
-    <!-- Background music: full-volume autoplay is attempted on every page visit. -->
+    <!-- Background music: 80% volume autoplay is attempted on every page visit. -->
     <audio id="bg-music" autoplay loop preload="auto" playsinline>
         <source src="music.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -662,7 +667,7 @@
                 return matchesCat && matchesSearch;
             });
 
-            document.getElementById('cert-result-count').textContent = `${filtered.length} ${currentCat === 'certified' ? 'certified credentials' : 'non-certified training records'}`;
+            document.getElementById('cert-result-count').textContent = `${filtered.length} ${currentCat === 'certified' ? 'certified credentials' : 'training sessions attended'}`;
 
             filtered.forEach(cert => {
                 const card = document.createElement('div');
@@ -727,14 +732,14 @@
 
     <script>
     (() => {
-      // Try audible, full-volume playback immediately on every page visit.
+      // Try audible playback at 80% volume immediately on every page visit.
       // Browsers may block audible autoplay; if so, start as soon as the visitor interacts.
       const bgMusic = document.getElementById('bg-music');
       if (bgMusic) {
-        bgMusic.volume = 1.0;
+        bgMusic.volume = 0.8;
         bgMusic.muted = false;
         const startMusic = () => {
-          bgMusic.volume = 1.0;
+          bgMusic.volume = 0.8;
           bgMusic.muted = false;
           const playAttempt = bgMusic.play();
           if (playAttempt && typeof playAttempt.then === 'function') {
